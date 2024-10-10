@@ -1,5 +1,5 @@
 ﻿Console.Clear();
-
+bool repetir = false;
 string[] biblioteca = { "Aventuras do Horizonte", "O Enigma do Vale Oculto", "Além da Fronteira", "Na Rota do Desafio", "O Legado do Explorador", "Rumo ao Desconhecido", "Exploradores da Terra Proibida", "O Mistério das Ruínas Antigas" };
 
 Console.WriteLine("-".PadLeft(30, '-'));
@@ -28,22 +28,30 @@ else
     Console.WriteLine($"{biblioteca[7]}");
 
     List<string> lista = new List<string>(biblioteca);
-    Console.WriteLine("Deseja alugar algum? (Limite por usuário 3 Livros):");
-    string escolhaLivroUsuario = Console.ReadLine().ToLower();
-
-    if (escolhaLivroUsuario == "s" || escolhaLivroUsuario == "Sim")
+    while (!repetir)
     {
-        Console.WriteLine("Qual: ");
-        string alugarLivroUsuario = Console.ReadLine();
-        if (lista.Remove(alugarLivroUsuario))
+        Console.WriteLine("Deseja alugar algum? (Limite por usuário 3 Livros):");
+        string escolhaLivroUsuario = Console.ReadLine().ToLower();
+
+        if (escolhaLivroUsuario == "s" || escolhaLivroUsuario == "Sim")
         {
-            Console.WriteLine("Livro alugado");
+            Console.WriteLine("Qual: ");
+            string alugarLivroUsuario = Console.ReadLine();
+            if (lista.Remove(alugarLivroUsuario))
+
+            {
+                Console.WriteLine("Livro alugado");
+            }
+            else
+            {
+                Console.WriteLine("Livro não encontrado");
+            }
         }
         else
         {
-            Console.WriteLine("Livro não encontrado");
+            Console.WriteLine("Não");
+            break;
         }
-
     }
 }
 
